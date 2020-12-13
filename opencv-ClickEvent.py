@@ -29,7 +29,9 @@ while True:
         #cv.circle(frame, point ,10, (142,142,123),-1)
         pass
     for p in points_list:
-        cv.circle(frame, p , 10 , (114,153,164), -1)
+        font = cv.FONT_HERSHEY_SIMPLEX
+        cv.circle(frame, p , 10 , (0,255,255), -1)
+        cv.putText(frame, str(p), p, font, 2, (0,255,0),3 )
     cv.imshow('S3-Cam',frame)
     if cv.waitKey(1) == ord('q'):
         break

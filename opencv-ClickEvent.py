@@ -33,8 +33,11 @@ while True:
         cv.circle(frame, p , 10 , (0,255,255), -1)
         cv.putText(frame, str(p), p, font, 2, (0,255,0),3 )
     cv.imshow('S3-Cam',frame)
-    if cv.waitKey(1) == ord('q'):
+    keyEvent = cv.waitKey(1)
+    if keyEvent == ord('q'):
         break
+    if keyEvent == ord('c'):
+        points_list = []
 
 cam.release()
 cv.destroyAllWindows()

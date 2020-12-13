@@ -9,8 +9,13 @@ cam = cv.VideoCapture(0)
 cv.namedWindow('Note3-Cam',cv.WINDOW_NORMAL)
 cv.resizeWindow('Note3-Cam',800,600)
 #Create Trackbar on window/canvas
-cv.createTrackbar('xSlide' ,'Note3-Cam', 20, 800, callback)
-cv.createTrackbar('ySlide', 'Note3-Cam', 20, 600, callback)
+cv.createTrackbar('xSlide' ,'Note3-Cam', 20, 1200, callback)
+cv.createTrackbar('ySlide', 'Note3-Cam', 20, 800, callback)
+
+cv.createTrackbar('box-width', 'Note3-Cam', 60,1200, callback)
+cv.createTrackbar('box-height', 'Note3-Cam', 30,800, callback)
+w = 80
+h = 60
 
 while True:
     resl,frame = cam.read()
@@ -19,7 +24,10 @@ while True:
         break
     xVal = cv.getTrackbarPos('xSlide','Note3-Cam')
     yVal  = cv.getTrackbarPos('ySlide','Note3-Cam')
-    cv.circle(frame,(xVal,yVal), 10 , (110,153,135), -1)
+    b_w = cv.getTrackbarPos('box-width','Note3-Cam')
+    b_h = cv.getTrackbarPos('box-height','Note3-Cam')
+
+    cv.rectangle(frame,(xVal,yVal),(xVal+b_w,yVal+b_h),(0,255,0), 3)
     cv.imshow('Note3-Cam',frame)
 
     if cv.waitKey(1)==ord('q'):

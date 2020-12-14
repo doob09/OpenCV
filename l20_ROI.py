@@ -15,8 +15,8 @@ while True:
         break    
     roi = frame[75:400, 100:600].copy() # Region Of Interest
     roiGray = cv.cvtColor(roi,cv.COLOR_BGR2GRAY) # convert into Gray ->reduce channel to 1
-
-    frame[75:400,100:600] = [0,255,0] # paint Green for the region
+    fake_color = cv.cvtColor(roiGray, cv.COLOR_GRAY2BGR)
+    frame[75:400,100:600] = fake_color # paint color for the region
     cv.imshow('ROI', roi)
     cv.moveWindow('ROI', 0, 700)
     cv.imshow('S3-Cam',frame)

@@ -15,7 +15,8 @@ while True:
         break    
     roi = frame[75:400, 100:600].copy() # Region Of Interest
     roiGray = cv.cvtColor(roi,cv.COLOR_BGR2GRAY) # convert into Gray ->reduce channel to 1
-    fake_color = cv.cvtColor(roiGray, cv.COLOR_GRAY2BGR)
+    fake_color = cv.cvtColor(roiGray, cv.COLOR_GRAY2BGR) # convert Gray Image back to Color Image
+    
     frame[75:400,100:600] = fake_color # paint color for the region
     cv.imshow('ROI', roi)
     cv.moveWindow('ROI', 0, 700)

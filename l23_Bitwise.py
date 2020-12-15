@@ -24,10 +24,13 @@ while True:
     ratio = 0.6
     new_width = int(frame.shape[1] * ratio)
     new_height = int(frame.shape[0] * ratio)
-    dim = (new_width, new_height)
+    #dim = (new_width, new_height)
+    dim = (640,480)
     resized_frame = cv.resize(frame,dim, interpolation = cv.INTER_AREA)
 
+    resized_frame = cv.bitwise_and(resized_frame,resized_frame,mask=bitXOr)
     cv.imshow('LG-Cam',resized_frame)
+    
 
     cv.imshow('Image 1',img1)
     #cv.moveWindow('Image 1', 100 ,1400)

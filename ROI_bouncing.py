@@ -10,8 +10,6 @@ box_ratio = 0.15
 dx = 50
 dy = 20
 
-
-print('x_start is :',x_start)
 while True:
     resl, frame = cam.read()
     if resl == False:
@@ -25,7 +23,7 @@ while True:
     dim = (new_width, new_height)
     resized_frame = cv.resize(frame,dim, interpolation = cv.INTER_AREA)
     
-    #Boucing Box
+    #Bouncing Box
     b_w = int(box_ratio * new_width) #define width of the box
     b_h = int(box_ratio * new_height) # define the height of the box
 

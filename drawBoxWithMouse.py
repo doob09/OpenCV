@@ -5,6 +5,8 @@ import math
 
 st_point = ()
 ed_point = ()
+dx = 10
+dy = 10
 
 # callback function for Mouse Events
 def callback(event,x,y,flags,params):
@@ -30,8 +32,6 @@ cam = cv.VideoCapture(0)
 cv.namedWindow('LG-Cam',cv.WINDOW_AUTOSIZE)
 cv.setMouseCallback('LG-Cam',callback)
 
-col =0
-row =0 
 #Show the video
 while True:
     resl , frame = cam.read()
@@ -50,14 +50,22 @@ while True:
     # OR do change the conditon of global variable to void this path
     # ONLY Create a rectangle if there are 2 points
     if  st_point and ed_point: 
+        
         cv.rectangle(resized_frame, st_point, ed_point, (0,255,0), 3)
         # Create Region Of Interest
         roi = resized_frame[st_point[1]: ed_point[1], st_point[0]: ed_point[0]]
         cv.imshow('ROI',roi)
-    
+        # Moving the box by press a key -> Problem: typle is immutable
+        # if keyEvent == ord('d'):
+        #     print('d pressed')
+        #     st_point[0] += 50
+        #     ed_point[0] += 50
+        #     print(st_point)
     cv.imshow('LG-Cam',resized_frame)
-    if cv.waitKey(1) == ord('q'):
+    keyEvent = cv.waitKey(1)
+    if keyEvent == ord('q'):
         break
+    
     
 cam.release()
 cv.destroyAllWindows()

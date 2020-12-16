@@ -16,7 +16,7 @@ cv.createTrackbar('Blend Value','Bld-Img',25,100,callback)
 cam = cv.VideoCapture(0)
 cv.namedWindow('LG-Cam',cv.WINDOW_AUTOSIZE)
 # Gray the image to create a MASK: 
-cvLogo =  cv.imread('cv.jpg')
+cvLogo =  cv.imread('images/cv.jpg')
 cvLogo = cv.resize(cvLogo,(640,480))
 grayLogo = cv.cvtColor(cvLogo,cv.COLOR_BGR2GRAY)
 cv.imshow('GRAY',grayLogo)
